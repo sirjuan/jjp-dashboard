@@ -4,6 +4,8 @@ import axios from 'axios'
 
 const YW_API_URL = 'https://api.aftership.com/v4'
 const YW_API_KEY = '177fa335-c16f-4ff2-ad31-34fb094f27c5'
+const RSS_API_URL = 'http://jjp-rss-to-api.heroku.com/v1/feed?url='
+const RSS_API_KEY = '&key=dfkjgjkdfkgjjdkfgjkdjksfgdsaseert'
 const options = {
   headers: {
     'Content-Type': 'application/json',
@@ -30,7 +32,9 @@ handleSubmit(event) {
   getLatestNewsFromHS() {
     const GOOGLE_FEED_API_URL = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=-1&q=';
     const url = GOOGLE_FEED_API_URL + 'http://www.hs.fi/rss/tuoreimmat.xml';
-    fetch('http://www.nasa.gov/rss/dyn/breaking_news.rss')
+    fetch(RSS_API_URL + 'https://www.nasa.gov/rss/dyn/breaking_news.rss'+ RSS_API_KEY, {
+      mode: 'no-cors'
+    })
 
     .then(text => console.log(text))
   }
